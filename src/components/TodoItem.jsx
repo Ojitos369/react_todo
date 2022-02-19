@@ -10,7 +10,7 @@ export function TodoItem({todo, toggleTodo, removeTodo, editTodo}) {
     let background = completed ? 'bg-success' : 'bg-danger';
     let text_color = completed ? 'text-dark' : 'text-white';
     let div_li_class = `todo_li list-group-item d-flex justify-content-between`;
-    let li_class = `todo_item col list-group-item d-flex justify-content-around ${background} ${text_color}`;
+    let li_class = `todo_item col-12 col-lg list-group-item d-flex justify-content-around ${background} ${text_color}`;
     const handleTodoClick = () => {
         toggleTodo(id);
     }
@@ -22,13 +22,16 @@ export function TodoItem({todo, toggleTodo, removeTodo, editTodo}) {
     }
     return (
         <div className={div_li_class}>
-            <li ref={todoTaskRef} className={li_class}>
-                <button data-bs-toggle="tooltip" data-bs-placement="top" title="Cambiar Estado" onClick={handleTodoClick} className="btn btn-primary">Cambiar a {estado}</button>
-                <h5 ref={todoText}>{text}</h5>
-                <p>{completed ? 'completado' : 'pendiente'} </p>
-                <button data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar tarea" onClick={handleRemoveClick}>🚜</button>
-            </li>
-            <button ref={buttonRef} data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Tarea" onClick={handleEditClick} className="btn col-1 btn-info">Edit</button>
+            <div class="container">
+                <div class="row">
+                    <button data-bs-toggle="tooltip" data-bs-placement="top" title="Cambiar Estado" onClick={handleTodoClick} className="btn btn-primary col-12 col-lg-2">Toggle</button>
+                    <li ref={todoTaskRef} className={li_class}>
+                        <h5 ref={todoText}>{text}</h5>
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar tarea" onClick={handleRemoveClick}>🗑️</button>
+                    </li>
+                    <button ref={buttonRef} data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Tarea" onClick={handleEditClick} className="btn btn-info col-12 col-lg-1">Edit</button>
+                </div>
+            </div>
         </div>
     )
 }
