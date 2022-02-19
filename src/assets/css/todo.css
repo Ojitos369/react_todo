@@ -3,3 +3,7 @@
     width: 100%;
     height: 99vh;
 }
+
+.todo_li {
+    background: #0000;
+}
